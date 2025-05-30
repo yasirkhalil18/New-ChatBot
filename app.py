@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 import requests
+import os  # environment variables ke liye
 
 app = Flask(__name__)
 
-API_KEY = "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"
+API_KEY = os.getenv("API_KEY")  # environment variable se le rahe hain
 API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 def ask_deepseek(prompt):
@@ -30,7 +31,7 @@ def ask_deepseek(prompt):
 def home():
     response = ""
     if request.method == "POST":
-        user_input = request.form["user_input"]
+        user_input = request.form.get("user_input")
         response = ask_deepseek(user_input)
     return render_template("index.html", response=response)
 
