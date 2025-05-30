@@ -4,7 +4,7 @@ import os  # environment variables ke liye
 
 app = Flask(__name__)
 
-API_KEY = os.getenv("API_KEY")  # environment variable se le rahe hain
+API_KEY = os.getenv("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")  # environment variable se le rahe hain
 API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 def ask_deepseek(prompt):
